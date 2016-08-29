@@ -1,2 +1,2 @@
 # CREx_EEG
-A suite of functions for the analysis of electroencephalography data
+A suite of functions to assist in the preprocessing, analysis and the exploration of electroencephalography data
