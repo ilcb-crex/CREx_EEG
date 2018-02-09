@@ -55,7 +55,7 @@ display('************************Calculating correlation of low frequency portio
 
 noisiness=zeros(chanlim, ep);
 noisinessMedian=zeros(1,ep);
-noisinessSD=zeros(1,ep);
+noisinessSD=zeros(chanlim,ep);
 badChannelsFromHFNoise=zeros(ep,chanlim);
 zscoreHFNoise=zeros(ep,chanlim);
 
@@ -90,6 +90,7 @@ for k1=1:ep  %for each epoch
     noisi=squeeze(noisi);
     noisiMedian = nanmedian(noisi);
     noisiSD = mad(noisi, 1)*1.4826;
+    assignin('base','noisiSD',noisiSD);
     
     noisiMedian=repmat(noisiMedian,1,size(noisi,1));
     noisiSD=repmat(noisiSD,1,size(noisi,1));
@@ -103,7 +104,7 @@ for k1=1:ep  %for each epoch
     
     noisiness(:,k1)=noisi;
     noisinessMedian(k1)=noisiMedian;
-    noisinessSD(k1)=noisiSD;
+    noisinessSD(:,k1)=noisiSD;
     zscoreHFNoise(k1,:)=zscoreHFNoiseTemp;
 end
 

@@ -126,7 +126,7 @@ if isequal(unique(Artcnt),0)==0  % if electrodes with above-threshold noise have
     end
     
     BadTrials = [find(numT>=badE)' numT(numT>=badE)'];
-    x=find(numT>=badE) % find those trials in which more than x electrodes are bad
+    x=find(numT>=badE); % find those trials in which more than x electrodes are bad
     badtrial_total=unique(cat(2,x,find(iArtcnt_total)));
     
     winrej_mat=zeros(length(badtrial_total), 5+nE);

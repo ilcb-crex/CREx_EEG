@@ -1,4 +1,3 @@
-
 function [NoisyOutput, DataIn]= EpochChan_dlg(DataIn)
 % Programmed by : D. Bolger                Date: June 2015
 % A function to enable the user to identify bad electrodes for continuous
@@ -83,7 +82,7 @@ while strcmp(repeat,'Yes')==1
     
     if size(DataIn.data,3)==1
         display('Continuous data. Calculate the PSD per Electrode.');
-        f1=PSD_calc(DataIn.data, DataIn.srate, {DataIn.chanlocs.labels},1:chan_num, freqs,DataIn.setname);
+        [~, f1]=PSD_calc(DataIn.data, DataIn.srate, {DataIn.chanlocs.labels},1:chan_num, freqs,DataIn.setname,'log');
         uiwait(f1)
     elseif size(DataIn.data,3)>1
         display('No PSD calculation of segmented data.');
